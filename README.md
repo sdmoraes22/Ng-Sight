@@ -1,1 +1,1 @@
-"# Ng-Sight Tutorial App For Angular and .NETCore" 
+# Ng-Sight Tutorial App For Angular and .NETCore 
