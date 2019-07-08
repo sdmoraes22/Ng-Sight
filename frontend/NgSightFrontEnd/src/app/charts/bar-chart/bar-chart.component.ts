@@ -1,5 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
+const SAMPLE_BARCHART_DATA: any[] = [
+  {data: [65, 59, 61, 81, 56, 54, 30], label: 'Q3 Sales'},
+  {data: [30, 45, 31, 42, 44, 14, 23], label: 'Q4 Sales'}
+];
+
+const SAMPE_BARCHART_LABELS: string[] = ['W1', 'W2', 'W3', 'W4', 'W5', 'W6', 'W7'];
+
 @Component({
   selector: 'app-bar-chart',
   templateUrl: './bar-chart.component.html',
@@ -9,7 +16,17 @@ export class BarChartComponent implements OnInit {
 
   constructor() { }
 
+  public barChartData: any[] = SAMPLE_BARCHART_DATA;
+  public barChartLabels: string[] = SAMPE_BARCHART_LABELS;
+  public barChartType = 'bar';
+  public barChartLegend = true;
+  public barChartOptions: any = {
+    showVerticalLines: false,
+    responsive: true
+  } ;
+
   ngOnInit() {
+
   }
 
 }
