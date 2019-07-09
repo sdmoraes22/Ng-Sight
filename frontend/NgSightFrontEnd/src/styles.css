@@ -50,3 +50,7 @@ a:hover {
     display: flex;
     flex-direction: column;
 }
+
+.cards .mb-3 {
+    margin-right: 10px;    
+}
