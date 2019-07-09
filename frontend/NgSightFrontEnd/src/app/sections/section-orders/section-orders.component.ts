@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Order } from '../../../shared/orders'
+import { Order } from '../../shared/orders'
 
 @Component({
   selector: 'app-section-orders',
