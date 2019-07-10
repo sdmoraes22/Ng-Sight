@@ -1,0 +1,14 @@
+/home/cristiano/Documentos/Estudos/DotNetCore/DashboardTutorial/Ng-Sight/backend/Advantage.API/bin/Debug/netcoreapp2.2/Advantage.API.deps.json
+/home/cristiano/Documentos/Estudos/DotNetCore/DashboardTutorial/Ng-Sight/backend/Advantage.API/bin/Debug/netcoreapp2.2/Advantage.API.runtimeconfig.json
+/home/cristiano/Documentos/Estudos/DotNetCore/DashboardTutorial/Ng-Sight/backend/Advantage.API/bin/Debug/netcoreapp2.2/Advantage.API.runtimeconfig.dev.json
+/home/cristiano/Documentos/Estudos/DotNetCore/DashboardTutorial/Ng-Sight/backend/Advantage.API/bin/Debug/netcoreapp2.2/Advantage.API.dll
+/home/cristiano/Documentos/Estudos/DotNetCore/DashboardTutorial/Ng-Sight/backend/Advantage.API/bin/Debug/netcoreapp2.2/Advantage.API.pdb
+/home/cristiano/Documentos/Estudos/DotNetCore/DashboardTutorial/Ng-Sight/backend/Advantage.API/obj/Debug/netcoreapp2.2/Advantage.API.csprojAssemblyReference.cache
+/home/cristiano/Documentos/Estudos/DotNetCore/DashboardTutorial/Ng-Sight/backend/Advantage.API/obj/Debug/netcoreapp2.2/Advantage.API.csproj.CoreCompileInputs.cache
+/home/cristiano/Documentos/Estudos/DotNetCore/DashboardTutorial/Ng-Sight/backend/Advantage.API/obj/Debug/netcoreapp2.2/Advantage.API.RazorAssemblyInfo.cache
+/home/cristiano/Documentos/Estudos/DotNetCore/DashboardTutorial/Ng-Sight/backend/Advantage.API/obj/Debug/netcoreapp2.2/Advantage.API.RazorAssemblyInfo.cs
+/home/cristiano/Documentos/Estudos/DotNetCore/DashboardTutorial/Ng-Sight/backend/Advantage.API/obj/Debug/netcoreapp2.2/Advantage.API.AssemblyInfoInputs.cache
+/home/cristiano/Documentos/Estudos/DotNetCore/DashboardTutorial/Ng-Sight/backend/Advantage.API/obj/Debug/netcoreapp2.2/Advantage.API.AssemblyInfo.cs
+/home/cristiano/Documentos/Estudos/DotNetCore/DashboardTutorial/Ng-Sight/backend/Advantage.API/obj/Debug/netcoreapp2.2/Advantage.API.RazorTargetAssemblyInfo.cache
+/home/cristiano/Documentos/Estudos/DotNetCore/DashboardTutorial/Ng-Sight/backend/Advantage.API/obj/Debug/netcoreapp2.2/Advantage.API.dll
+/home/cristiano/Documentos/Estudos/DotNetCore/DashboardTutorial/Ng-Sight/backend/Advantage.API/obj/Debug/netcoreapp2.2/Advantage.API.pdb
