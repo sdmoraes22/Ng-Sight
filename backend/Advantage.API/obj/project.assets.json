@@ -12174,6 +12174,7 @@
         "netcoreapp2.2"
       ],
       "sources": {
+        "http://172.26.242.152/Nuget/nuget": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {

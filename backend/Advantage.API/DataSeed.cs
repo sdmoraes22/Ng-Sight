@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Advantage.API.Models;
@@ -22,12 +23,12 @@ namespace Advantage.API
 
             if(!_ctx.Orders.Any())
             {
-                SeedOrders(nCustomers);
+                SeedOrders();
             }
 
             if(!_ctx.Servers.Any())
             {
-                SeedServers(nCustomers);
+                SeedServers();
             }
                 _ctx.SaveChanges();
         }
@@ -42,22 +43,64 @@ namespace Advantage.API
             }
         }
 
+        private void SeedOrders(int n)
+        {
+            List<Order> orders = BuildOrderList(n);
+            foreach(var order in orders)
+            {
+                _ctx.Orders.Add(order);
+            }
+        }
+
+        private void SeedServers()
+        {
+            List<Server> servers = BuildServerList();
+            foreach(var server in servers)
+            {
+                _ctx.Servers.Add(server);
+            } 
+        }
+
         private List<Customer> BuildCustomerList(int nCustomers)
         {
             var customers = new List<Customer>();
-
-            var Name = Helpers.MakeCustomersName();
+            var names = new List<string>();
 
             for(var i = 1; i <= nCustomers; i++)
             {
+                var name = Helpers.MakeUniqueCustomersName(names);
+                names.Add(name);
+                
                 customers.Add(new Customer{
                     Id = i,
                     Name = name,
-                    Email = email,
-                    State = state
+                    Email = Helpers.MakeCustomerEmail(name),
+                    State = Helpers.GetRandomState()
                 });
             }
-            return null;
+
+            return customers;
+        }
+
+        private List<Order> BuildOrderList(int nOrders)
+        {
+            var orders = new List<Order>();
+            var rand =  new Random();
+            
+            for(var i = 1; i <= nOrders; i++)
+            {
+                var randCustomerId = rand.Next(_ctx.Customers.Count());
+                var placed = Helpers.GetRandomOrderPlaced();
+                var completed = Helpers.GetRandomOrderCompleted(placed);
+                orders.Add(new Order{
+                    Id = 1,
+                    Customer = _ctx.Customers.First(c => c.Id == randCustomerId),
+                    Total = Helpers.GetRandomOrderTotal(),
+                    Placed = placed,
+                    Completed = completed
+                });
+            }
+            
         }
     }
 }
