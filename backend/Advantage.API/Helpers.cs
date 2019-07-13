@@ -47,6 +47,30 @@ namespace Advantage.API
             return _rand.Next(100, 5000);
         }
 
+        internal static DateTime GetRandomOrderPlaced()
+        {
+            DateTime start = new DateTime(1995, 1, 1);
+            Random rand = new Random();
+            int range = (DateTime.Today - start).Days;
+            return start.AddDays(rand.Next(range))
+                        .AddHours(rand.Next(0,24))
+                        .AddMinutes(rand.Next(0,60))
+                        .AddSeconds(rand.Next(0,60));
+            
+        }
+
+
+        internal static DateTime GetRandomOrderCompleted(DateTime placed)
+        {
+            DateTime end = placed.AddDays(30);
+            Random rand = new Random();
+            int range = (end - DateTime.Today).Days;
+            return end.AddDays(rand.Next(range))
+                        .AddHours(rand.Next(0, 24))
+                        .AddMinutes(rand.Next(0, 60))
+                        .AddSeconds(rand.Next(0, 60));
+        }
+
         private static readonly List<string> usStates = new List<string>() {
             "AK", "AL", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA",
             "AV", "ASK", "SAK", "RAK", "WAK", "ABK", "AAK", "ASK", "ADK", "GWA", 

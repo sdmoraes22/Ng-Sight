@@ -23,7 +23,7 @@ namespace Advantage.API
 
             if(!_ctx.Orders.Any())
             {
-                SeedOrders();
+                SeedOrders(nOrders);
             }
 
             if(!_ctx.Servers.Any())
@@ -100,7 +100,19 @@ namespace Advantage.API
                     Completed = completed
                 });
             }
-            
+            return orders;
+        }
+
+        private List<Server> BuildServerList(int nServers)
+        {
+            var servers = new List<Server>();
+
+            for(var i = 1; i <= nServers; i++)
+            {
+                
+            }
+
+            return servers;
         }
     }
 }
