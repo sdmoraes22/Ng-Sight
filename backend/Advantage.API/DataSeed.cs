@@ -14,7 +14,7 @@ namespace Advantage.API
             _ctx = ctx;
         }
 
-        public void SeedData(int nCustomers, int nOrders)
+        public void SeedData(int nCustomers, int nOrders, int nServers)
         {
             if(!_ctx.Customers.Any())
             {
@@ -28,7 +28,7 @@ namespace Advantage.API
 
             if(!_ctx.Servers.Any())
             {
-                SeedServers();
+                SeedServers(nServers);
             }
                 _ctx.SaveChanges();
         }
@@ -52,9 +52,9 @@ namespace Advantage.API
             }
         }
 
-        private void SeedServers()
+        private void SeedServers(int nServers)
         {
-            List<Server> servers = BuildServerList();
+            List<Server> servers = BuildServerList(nServers);
             foreach(var server in servers)
             {
                 _ctx.Servers.Add(server);
@@ -109,9 +109,13 @@ namespace Advantage.API
 
             for(var i = 1; i <= nServers; i++)
             {
-                
+                var server = new Server{
+                    Id = i,
+                    Name = "Prod",
+                    IsOnline = true,
+                };
+                servers.Add(server);
             }
-
             return servers;
         }
     }

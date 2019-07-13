@@ -50,12 +50,11 @@ namespace Advantage.API
         internal static DateTime GetRandomOrderPlaced()
         {
             DateTime start = new DateTime(1995, 1, 1);
-            Random rand = new Random();
             int range = (DateTime.Today - start).Days;
-            return start.AddDays(rand.Next(range))
-                        .AddHours(rand.Next(0,24))
-                        .AddMinutes(rand.Next(0,60))
-                        .AddSeconds(rand.Next(0,60));
+            return start.AddDays(_rand.Next(range))
+                        .AddHours(_rand.Next(0,24))
+                        .AddMinutes(_rand.Next(0,60))
+                        .AddSeconds(_rand.Next(0,60));
             
         }
 
@@ -63,12 +62,16 @@ namespace Advantage.API
         internal static DateTime GetRandomOrderCompleted(DateTime placed)
         {
             DateTime end = placed.AddDays(30);
-            Random rand = new Random();
             int range = (end - DateTime.Today).Days;
-            return end.AddDays(rand.Next(range))
-                        .AddHours(rand.Next(0, 24))
-                        .AddMinutes(rand.Next(0, 60))
-                        .AddSeconds(rand.Next(0, 60));
+            return end.AddDays(_rand.Next(range))
+                        .AddHours(_rand.Next(0, 24))
+                        .AddMinutes(_rand.Next(0, 60))
+                        .AddSeconds(_rand.Next(0, 60));
+        }
+        
+        internal static string GetRandomServerName()
+        {
+            return GetRandom(usStates);
         }
 
         private static readonly List<string> usStates = new List<string>() {
