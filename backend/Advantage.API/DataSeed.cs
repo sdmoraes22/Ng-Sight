@@ -14,23 +14,25 @@ namespace Advantage.API
             _ctx = ctx;
         }
 
-        public void SeedData(int nCustomers, int nOrders, int nServers)
+        public void SeedData(int nCustomers, int nOrders)
         {
             if(!_ctx.Customers.Any())
             {
                 SeedCustomers(nCustomers);
+                _ctx.SaveChanges();
             }
 
             if(!_ctx.Orders.Any())
             {
                 SeedOrders(nOrders);
+                _ctx.SaveChanges();
             }
 
             if(!_ctx.Servers.Any())
             {
-                SeedServers(nServers);
-            }
+                SeedServers();
                 _ctx.SaveChanges();
+            }
         }
 
         private void SeedCustomers(int n)
@@ -52,9 +54,9 @@ namespace Advantage.API
             }
         }
 
-        private void SeedServers(int nServers)
+        private void SeedServers()
         {
-            List<Server> servers = BuildServerList(nServers);
+            List<Server> servers = BuildServerList();
             foreach(var server in servers)
             {
                 _ctx.Servers.Add(server);
@@ -86,15 +88,16 @@ namespace Advantage.API
         {
             var orders = new List<Order>();
             var rand =  new Random();
+            var customers = _ctx.Customers.ToList();
             
             for(var i = 1; i <= nOrders; i++)
             {
-                var randCustomerId = rand.Next(_ctx.Customers.Count());
+                var randCustomerId = rand.Next(1, _ctx.Customers.Count());
                 var placed = Helpers.GetRandomOrderPlaced();
                 var completed = Helpers.GetRandomOrderCompleted(placed);
                 orders.Add(new Order{
-                    Id = 1,
-                    Customer = _ctx.Customers.First(c => c.Id == randCustomerId),
+                    Id = i,
+                    Customer = customers.First(c => c.Id == randCustomerId),
                     Total = Helpers.GetRandomOrderTotal(),
                     Placed = placed,
                     Completed = completed
@@ -103,20 +106,67 @@ namespace Advantage.API
             return orders;
         }
 
-        private List<Server> BuildServerList(int nServers)
+        private List<Server> BuildServerList()
         {
-            var servers = new List<Server>();
-
-            for(var i = 1; i <= nServers; i++)
+            return new List<Server>() 
             {
-                var server = new Server{
-                    Id = i,
-                    Name = Helpers.GetRandomServerName(),
-                    IsOnline = true,
-                };
-                servers.Add(server);
-            }
-            return servers;
+                new Server
+                {
+                    Id = 1,
+                    Name = "Dev-Server",
+                    IsOnline = true
+                },
+                new Server
+                {
+                    Id = 2,
+                    Name = "Dev-Mail",
+                    IsOnline = false
+                },
+                new Server
+                {
+                    Id = 3,
+                    Name = "Dev-Services",
+                    IsOnline = true
+                },
+                new Server
+                {
+                    Id = 4,
+                    Name = "QA-Server",
+                    IsOnline = true
+                },
+                new Server
+                {
+                    Id = 5,
+                    Name = "QA-Mail",
+                    IsOnline = false
+                },
+                new Server
+                {
+                    Id = 6,
+                    Name = "QA-Services",
+                    IsOnline = true
+                },
+                new Server
+                {
+                    Id = 7,
+                    Name = "Prod-Server",
+                    IsOnline = true
+                },
+                new Server
+                {
+                    Id = 8,
+                    Name = "Prod-Mail",
+                    IsOnline = true
+                },
+                new Server
+                {
+                    Id = 9,
+                    Name = "Prod-Services",
+                    IsOnline = true
+                },
+            };
+
+            
         }
     }
 }

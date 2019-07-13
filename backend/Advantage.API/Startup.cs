@@ -33,11 +33,14 @@ namespace Advantage.API
             services.AddEntityFrameworkNpgsql()
                     .AddDbContext<ApiContext>(opt => opt
                         .UseNpgsql(_connectionString));
+            
+            services.AddTransient<DataSeed>();
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, DataSeed seed)
         {
             if (env.IsDevelopment())
             {
@@ -50,6 +53,7 @@ namespace Advantage.API
             }
 
             app.UseHttpsRedirection();
+            seed.SeedData(20, 1000);
             app.UseMvc();
         }
     }

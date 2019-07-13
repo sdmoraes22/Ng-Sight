@@ -48,24 +48,30 @@ namespace Advantage.API
 
         internal static DateTime GetRandomOrderPlaced()
         {
-            DateTime start = new DateTime(1995, 1, 1);
-            int range = (DateTime.Today - start).Days;
-            return start.AddDays(_rand.Next(range))
-                        .AddHours(_rand.Next(0,24))
-                        .AddMinutes(_rand.Next(0,60))
-                        .AddSeconds(_rand.Next(0,60));
-            
+
+            var end = DateTime.Now;
+            var start = end.AddDays(-90);
+
+            TimeSpan possibleSpan = end - start;
+            TimeSpan newSpan = new TimeSpan(0, _rand.Next(0, (int)possibleSpan.TotalMinutes), 0);
+
+            return start + newSpan;
         }
 
 
-        internal static DateTime GetRandomOrderCompleted(DateTime placed)
+        internal static DateTime? GetRandomOrderCompleted(DateTime orderPlaced)
         {
-            DateTime end = placed.AddDays(30);
-            int range = (end - DateTime.Today).Days;
-            return end.AddDays(_rand.Next(range))
-                        .AddHours(_rand.Next(0, 24))
-                        .AddMinutes(_rand.Next(0, 60))
-                        .AddSeconds(_rand.Next(0, 60));
+            
+            var now = DateTime.Now;
+            var minLeadTime = TimeSpan.FromDays(7);
+            var timePassed = now - orderPlaced;
+
+            if (timePassed < minLeadTime)
+            {
+                return null;
+            }
+
+            return orderPlaced.AddDays(_rand.Next(7, 14));
         }
         
         internal static string GetRandomServerName()
