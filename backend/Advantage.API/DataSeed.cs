@@ -111,7 +111,7 @@ namespace Advantage.API
             {
                 var server = new Server{
                     Id = i,
-                    Name = "Prod",
+                    Name = Helpers.GetRandomServerName(),
                     IsOnline = true,
                 };
                 servers.Add(server);

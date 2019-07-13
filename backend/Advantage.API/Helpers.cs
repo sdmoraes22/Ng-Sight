@@ -8,7 +8,6 @@ namespace Advantage.API
         private static Random _rand = new Random();
         private static string GetRandom(IList<string> items)
         {
-            var rand = new Random();
             return items[_rand.Next(items.Count)];
         }
         internal static string MakeUniqueCustomersName(List<string> names)
