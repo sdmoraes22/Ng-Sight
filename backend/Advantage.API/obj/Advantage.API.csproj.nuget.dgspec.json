@@ -24,6 +24,7 @@
         ],
         "sources": {
           "http://172.26.242.152/Nuget/nuget": {},
+          "http://nuget.bgdigital.com.br/nuget": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
